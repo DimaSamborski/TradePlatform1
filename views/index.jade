@@ -1,5 +1,21 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    .container
+        .row
+            h3.newProduct New product
+        .row
+            for newProduct in newProducts
+                .col-md-4.productWrapper
+                    img.productImg(src=newProduct.imgSrc)
+                    h5.productName=newProduct.name
+                    p.description=newProduct.description
+                    button.btn.btn-primary(type='button')
+                        a.productlink(href='product=' + newProduct.id)=newProduct.name
+        .row
+            h3 Most active user
+        .row
+            for user in activeUsers
+                .col-md-4
+                    h5=user.name
+                    p='Year ' + user.year
